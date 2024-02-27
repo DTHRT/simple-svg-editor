@@ -9,17 +9,8 @@ export function oMousePos(svg, evt) {
 }
 
 export function drawElement(o) {
-  /*
-      let o = {
-        properties : {
-        x1:100, y1:220, x2:220, y2:70},
-        parent:document.queelementsArrSelector("svg"),
-        tagName:'line'
-      }
-      */
   let el = document.createElementNS(SVG_NS, o.tagName)
   for (let name in o.properties) {
-    // console.log(name);
     if (o.properties.hasOwnProperty(name)) {
       el.setAttributeNS(null, name, o.properties[name])
     }
