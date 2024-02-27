@@ -2,8 +2,8 @@ const SVG_NS = 'http://www.w3.org/2000/svg'
 const svg = document.querySelector('svg')
 const deg = 180 / Math.PI
 
-var rotating = false
-var dragging = false
+let rotating = false
+let dragging = false
 let impact = {
   x: 0,
   y: 0,
@@ -131,7 +131,7 @@ function Element(o, index) {
     )
   }
 
-  var box = {
+  let box = {
     properties: {
       points: this.pointsValue(),
       fill: 'none',
@@ -143,7 +143,7 @@ function Element(o, index) {
   }
   this.box = drawElement(box)
 
-  var leftTop = {
+  let leftTop = {
     properties: {
       cx: this.LT.x,
       cy: this.LT.y,
@@ -157,7 +157,7 @@ function Element(o, index) {
   this.lt = drawElement(leftTop)
 
   this.update = function () {
-    var transf =
+    let transf =
       'translate(' +
       this.o.x +
       ', ' +
@@ -172,8 +172,8 @@ function Element(o, index) {
   }
 }
 
-for (var i = 0; i < objectsArr.length; i++) {
-  var el = new Element(objectsArr[i], i + 1)
+for (let i = 0; i < objectsArr.length; i++) {
+  let el = new Element(objectsArr[i], i + 1)
   el.update()
   elementsArr.push(el)
 }
@@ -181,7 +181,7 @@ for (var i = 0; i < objectsArr.length; i++) {
 svg.addEventListener(
   'mousedown',
   function (evt) {
-    var index = parseInt(evt.target.parentElement.id) - 1
+    let index = parseInt(evt.target.parentElement.id) - 1
     if (evt.target.tagName == elementsArr[index].tagName) {
       dragging = index + 1
       impact = oMousePos(svg, evt)
@@ -220,14 +220,14 @@ svg.addEventListener(
     m = oMousePos(svg, evt)
 
     if (dragging) {
-      var index = dragging - 1
+      let index = dragging - 1
       elementsArr[index].o.x = m.x + delta.x
       elementsArr[index].o.y = m.y + delta.y
       elementsArr[index].update()
     }
 
     if (rotating) {
-      var index = rotating - 1
+      let index = rotating - 1
       elementsArr[index].a =
         Math.atan2(elementsArr[index].o.y - m.y, elementsArr[index].o.x - m.x) -
         elementsArr[index].A
@@ -238,7 +238,7 @@ svg.addEventListener(
 )
 
 function oMousePos(svg, evt) {
-  var ClientRect = svg.getBoundingClientRect()
+  let ClientRect = svg.getBoundingClientRect()
   return {
     x: Math.round(evt.clientX - ClientRect.left),
     y: Math.round(evt.clientY - ClientRect.top),
@@ -247,15 +247,15 @@ function oMousePos(svg, evt) {
 
 function drawElement(o) {
   /*
-    var o = {
+    let o = {
       properties : {
       x1:100, y1:220, x2:220, y2:70},
       parent:document.queelementsArrSelector("svg"),
       tagName:'line'
     }
     */
-  var el = document.createElementNS(SVG_NS, o.tagName)
-  for (var name in o.properties) {
+  let el = document.createElementNS(SVG_NS, o.tagName)
+  for (let name in o.properties) {
     // console.log(name);
     if (o.properties.hasOwnProperty(name)) {
       el.setAttributeNS(null, name, o.properties[name])
