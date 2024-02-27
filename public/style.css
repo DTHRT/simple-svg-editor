@@ -1,0 +1,30 @@
+body {
+    background: black;
+}
+
+p {
+    text-align: center;
+    color: #777
+}
+
+svg {
+    border: 1px solid #333;
+    display: block;
+    margin: 150px auto;
+    cursor: auto;
+}
+
+path,
+line,
+polygon {
+    stroke: dodgerblue;
+}
+
+path {
+    cursor: move;
+}
+
+circle {
+    fill: dodgerblue;
+    cursor: alias;
+}

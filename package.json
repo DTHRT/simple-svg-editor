@@ -1,0 +1,16 @@
+{
+  "name": "simple-svg-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/main.js",
+  "scripts": {
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DTHRT",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.2",
+    "prettier": "^3.2.5"
+  }
+}
