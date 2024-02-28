@@ -63,7 +63,7 @@ for (let i = 0; i < objectsArr.length; i++) {
 
 svg.addEventListener(
   'mousedown',
-  function (evt) {
+  (evt) => {
     let index = parseInt(evt.target.parentElement.id) - 1
     if (evt.target.tagName === elementsArr[index].tagName) {
       dragging = index + 1
@@ -82,7 +82,7 @@ svg.addEventListener(
 
 svg.addEventListener(
   'mouseup',
-  function (evt) {
+  () => {
     rotating = false
     dragging = false
   },
@@ -91,7 +91,7 @@ svg.addEventListener(
 
 svg.addEventListener(
   'mouseleave',
-  function (evt) {
+  () => {
     rotating = false
     dragging = false
   },
@@ -100,7 +100,7 @@ svg.addEventListener(
 
 svg.addEventListener(
   'mousemove',
-  function (evt) {
+  (evt) => {
     const mouseCoordinates = oMousePos(svg, evt)
 
     if (dragging) {
