@@ -33,6 +33,7 @@ svg.addEventListener(
       })
     } else {
       selectedElement = new ElementClass(currentElement, svg)
+      selectedElement.update()
       elements.push(selectedElement)
     }
 
