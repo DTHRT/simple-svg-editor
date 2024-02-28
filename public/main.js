@@ -1,9 +1,10 @@
 import { ElementClass } from './Element.class.js'
+import { oMousePos } from './utils.js'
 
 const svg = document.querySelector('svg')
 
 let rotating = false
-let dragging = false
+let isDragging = false
 
 const delta = {
   x: 0,
@@ -11,27 +12,21 @@ const delta = {
 }
 
 const supportedTags = ['path', 'polygon']
-
-svg.addEventListener('click', (evt) => {
-  const currentElement = evt.target
-  if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
-
-  const element = new ElementClass(currentElement, svg)
-  console.log(element)
-})
+let selectedElement = null
 
 svg.addEventListener(
   'mousedown',
   (evt) => {
-    // let index = parseInt(evt.target.parentElement.id) - 1
-    // if (evt.target.tagName === elementsArr[index].tagName) {
-    //   dragging = index + 1
-    //
-    //   const mouseCoordinates = oMousePos(svg, evt)
-    //   delta.x = elementsArr[index].element.x - mouseCoordinates.x
-    //   delta.y = elementsArr[index].element.y - mouseCoordinates.y
-    // }
-    //
+    const currentElement = evt.target
+    if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
+
+    selectedElement = new ElementClass(currentElement, svg)
+
+    const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
+    delta.x = selectedElement.element.x - mouseX
+    delta.y = selectedElement.element.y - mouseY
+    isDragging = true
+
     // if (evt.target.tagName === 'circle') {
     //   rotating = parseInt(evt.target.parentElement.id)
     // }
@@ -43,7 +38,7 @@ svg.addEventListener(
   'mouseup',
   () => {
     rotating = false
-    dragging = false
+    isDragging = false
   },
   false
 )
@@ -52,7 +47,7 @@ svg.addEventListener(
   'mouseleave',
   () => {
     rotating = false
-    dragging = false
+    isDragging = false
   },
   false
 )
@@ -60,14 +55,14 @@ svg.addEventListener(
 svg.addEventListener(
   'mousemove',
   (evt) => {
-    // const mouseCoordinates = oMousePos(svg, evt)
-    //
-    // if (dragging) {
-    //   let index = dragging - 1
-    //   elementsArr[index].element.x = mouseCoordinates.x + delta.x
-    //   elementsArr[index].element.y = mouseCoordinates.y + delta.y
-    //   elementsArr[index].update()
-    // }
+    const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
+
+    if (isDragging) {
+      selectedElement.element.x = mouseX + delta.x
+      selectedElement.element.y = mouseY + delta.y
+      selectedElement.update()
+    }
+
     //
     // if (rotating) {
     //   let index = rotating - 1
@@ -81,3 +76,8 @@ svg.addEventListener(
   },
   false
 )
+
+document.addEventListener('click', (e) => {
+  const { x, y } = svg.getBoundingClientRect()
+  console.log('mouse', e.clientX - x, e.clientY - y)
+})

@@ -20,9 +20,11 @@ export class ElementClass {
     }
 
     this.element = {
-      x: this.elRect.x,
-      y: this.elRect.y,
+      x: this.elRect.x - this.svgRect.x + this.elRect.width / 2,
+      y: this.elRect.y - this.svgRect.y + this.elRect.height / 2,
     }
+
+    console.log(this.element)
 
     this.A = Math.atan2(this.elRect.height / 2, this.elRect.width / 2)
 
@@ -59,7 +61,7 @@ export class ElementClass {
 
   update() {
     const transformValue = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
-    this.el.setAttributeNS(null, 'transform', transformValue)
+    this.link.setAttributeNS(null, 'transform', transformValue)
     this.box.setAttributeNS(null, 'transform', transformValue)
     this.lt.setAttributeNS(null, 'transform', transformValue)
   }
