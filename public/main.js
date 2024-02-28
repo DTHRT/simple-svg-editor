@@ -50,7 +50,7 @@ svg.addEventListener(
   false
 )
 
-svg.addEventListener(
+document.addEventListener(
   'mouseup',
   () => {
     isRotating = false
@@ -59,16 +59,7 @@ svg.addEventListener(
   false
 )
 
-// svg.addEventListener(
-//   'mouseleave',
-//   () => {
-//     isRotating = false
-//     isDragging = false
-//   },
-//   false
-// )
-
-svg.addEventListener(
+document.addEventListener(
   'mousemove',
   (evt) => {
     const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
