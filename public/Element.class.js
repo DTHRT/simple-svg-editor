@@ -25,22 +25,7 @@ export class Element {
       x: this.Left,
       y: this.Top,
     }
-    this.RT = {
-      x: this.Right,
-      y: this.Top,
-    }
-    this.LB = {
-      x: this.Left,
-      y: this.Bottom,
-    }
-    this.RB = {
-      x: this.Right,
-      y: this.Bottom,
-    }
-    this.c = {
-      x: 0, // (this.elRect.width / 2) + this.Left,
-      y: 0, // (this.elRect.height / 2) + this.Top
-    }
+
     this.o = {
       x: element.pos.x,
       y: element.pos.y,
