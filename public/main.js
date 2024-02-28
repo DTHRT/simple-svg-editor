@@ -14,6 +14,7 @@ const delta = {
 const supportedTags = ['path', 'polygon']
 const elements = []
 let selectedElement = null
+let selectedRotationKnob = null
 
 svg.addEventListener(
   'mousedown',
@@ -22,6 +23,7 @@ svg.addEventListener(
 
     if (currentElement.tagName === 'circle') {
       isRotating = true
+      selectedRotationKnob = currentElement.getAttribute('id')
       return
     }
 
@@ -72,11 +74,40 @@ document.addEventListener(
     }
 
     if (isRotating) {
-      selectedElement.a =
-        Math.atan2(
-          selectedElement.element.y - mouseY,
-          selectedElement.element.x - mouseX
-        ) - selectedElement.A
+      switch (selectedRotationKnob) {
+        case 'LT':
+          selectedElement.a =
+            Math.atan2(
+              selectedElement.element.y - mouseY,
+              selectedElement.element.x - mouseX
+            ) - selectedElement.A
+          break
+
+        case 'RT':
+          selectedElement.a =
+            Math.atan2(
+              mouseY - selectedElement.element.y,
+              mouseX - selectedElement.element.x
+            ) + selectedElement.A
+          break
+
+        case 'RB':
+          selectedElement.a =
+            Math.atan2(
+              mouseY - selectedElement.element.y,
+              mouseX - selectedElement.element.x
+            ) - selectedElement.A
+          break
+
+        case 'LB':
+          selectedElement.a =
+            Math.atan2(
+              selectedElement.element.y - mouseY,
+              selectedElement.element.x - mouseX
+            ) + selectedElement.A
+          break
+      }
+
       selectedElement.update()
     }
   },

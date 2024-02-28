@@ -40,6 +40,21 @@ export class ElementClass {
       y: this.Top,
     }
 
+    this.RT = {
+      x: this.Right,
+      y: this.Top,
+    }
+
+    this.LB = {
+      x: this.Left,
+      y: this.Bottom,
+    }
+
+    this.RB = {
+      x: this.Right,
+      y: this.Bottom,
+    }
+
     this.element = {
       x: this.elRect.x - this.svgRect.x + this.elRect.width / 2,
       y: this.elRect.y - this.svgRect.y + this.elRect.height / 2,
@@ -64,6 +79,43 @@ export class ElementClass {
         cy: this.LT.y,
         r: 6,
         fill: 'blue',
+        id: 'LT',
+      },
+      parent: element.parentElement,
+      tagName: 'circle',
+    })
+
+    this.rt = drawElement({
+      properties: {
+        cx: this.RT.x,
+        cy: this.RT.y,
+        r: 6,
+        fill: 'blue',
+        id: 'RT',
+      },
+      parent: element.parentElement,
+      tagName: 'circle',
+    })
+
+    this.lb = drawElement({
+      properties: {
+        cx: this.LB.x,
+        cy: this.LB.y,
+        r: 6,
+        fill: 'blue',
+        id: 'LB',
+      },
+      parent: element.parentElement,
+      tagName: 'circle',
+    })
+
+    this.rb = drawElement({
+      properties: {
+        cx: this.RB.x,
+        cy: this.RB.y,
+        r: 6,
+        fill: 'blue',
+        id: 'RB',
       },
       parent: element.parentElement,
       tagName: 'circle',
@@ -83,5 +135,8 @@ export class ElementClass {
     this.link.setAttributeNS(null, 'transform', transformValue)
     this.box.setAttributeNS(null, 'transform', transformValue)
     this.lt.setAttributeNS(null, 'transform', transformValue)
+    this.rt.setAttributeNS(null, 'transform', transformValue)
+    this.lb.setAttributeNS(null, 'transform', transformValue)
+    this.rb.setAttributeNS(null, 'transform', transformValue)
   }
 }
