@@ -11,11 +11,6 @@ const delta = {
   y: 0,
 }
 
-let mouse = {
-  x: 0,
-  y: 0,
-}
-
 const elementsArr = []
 const objectsArr = []
 
@@ -106,12 +101,12 @@ svg.addEventListener(
 svg.addEventListener(
   'mousemove',
   function (evt) {
-    mouse = oMousePos(svg, evt)
+    const mouseCoordinates = oMousePos(svg, evt)
 
     if (dragging) {
       let index = dragging - 1
-      elementsArr[index].element.x = mouse.x + delta.x
-      elementsArr[index].element.y = mouse.y + delta.y
+      elementsArr[index].element.x = mouseCoordinates.x + delta.x
+      elementsArr[index].element.y = mouseCoordinates.y + delta.y
       elementsArr[index].update()
     }
 
@@ -119,8 +114,8 @@ svg.addEventListener(
       let index = rotating - 1
       elementsArr[index].a =
         Math.atan2(
-          elementsArr[index].element.y - mouse.y,
-          elementsArr[index].element.x - mouse.x
+          elementsArr[index].element.y - mouseCoordinates.y,
+          elementsArr[index].element.x - mouseCoordinates.x
         ) - elementsArr[index].A
       elementsArr[index].update()
     }
