@@ -4,16 +4,16 @@ const SVG_NS = 'http://www.w3.org/2000/svg'
 const deg = 180 / Math.PI
 
 export class Element {
-  constructor(o, index, svg) {
+  constructor(element, index, svg) {
     this.g = document.createElementNS(SVG_NS, 'g')
     this.g.setAttributeNS(null, 'id', index)
     svg.appendChild(this.g)
 
-    o.parent = this.g
+    element.parent = this.g
 
-    this.el = drawElement(o)
+    this.el = drawElement(element)
     this.a = 0
-    this.tagName = o.tagName
+    this.tagName = element.tagName
     this.elRect = this.el.getBoundingClientRect()
     this.svgRect = svg.getBoundingClientRect()
     this.Left = this.elRect.left - this.svgRect.left
@@ -42,8 +42,8 @@ export class Element {
       y: 0, // (this.elRect.height / 2) + this.Top
     }
     this.o = {
-      x: o.pos.x,
-      y: o.pos.y,
+      x: element.pos.x,
+      y: element.pos.y,
     }
 
     this.A = Math.atan2(this.elRect.height / 2, this.elRect.width / 2)
