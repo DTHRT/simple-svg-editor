@@ -65,7 +65,7 @@ svg.addEventListener(
   'mousedown',
   function (evt) {
     let index = parseInt(evt.target.parentElement.id) - 1
-    if (evt.target.tagName == elementsArr[index].tagName) {
+    if (evt.target.tagName === elementsArr[index].tagName) {
       dragging = index + 1
 
       const mouseCoordinates = oMousePos(svg, evt)
@@ -73,7 +73,7 @@ svg.addEventListener(
       delta.y = elementsArr[index].element.y - mouseCoordinates.y
     }
 
-    if (evt.target.tagName == 'circle') {
+    if (evt.target.tagName === 'circle') {
       rotating = parseInt(evt.target.parentElement.id)
     }
   },
