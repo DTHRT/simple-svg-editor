@@ -26,7 +26,7 @@ export class Element {
       y: this.Top,
     }
 
-    this.o = {
+    this.element = {
       x: element.pos.x,
       y: element.pos.y,
     }
@@ -68,7 +68,7 @@ export class Element {
   }
 
   update() {
-    let transf = `translate(${this.o.x}, ${this.o.y}) rotate(${this.a * deg})`
+    let transf = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
     this.el.setAttributeNS(null, 'transform', transf)
     this.box.setAttributeNS(null, 'transform', transf)
     this.lt.setAttributeNS(null, 'transform', transf)
