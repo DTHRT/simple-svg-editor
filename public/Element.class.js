@@ -33,7 +33,7 @@ export class Element {
 
     this.A = Math.atan2(this.elRect.height / 2, this.elRect.width / 2)
 
-    let box = {
+    this.box = drawElement({
       properties: {
         points: this.pointsValue(),
         fill: 'none',
@@ -42,10 +42,9 @@ export class Element {
       },
       parent: this.g,
       tagName: 'polyline',
-    }
-    this.box = drawElement(box)
+    })
 
-    let leftTop = {
+    this.lt = drawElement({
       properties: {
         cx: this.LT.x,
         cy: this.LT.y,
@@ -54,9 +53,7 @@ export class Element {
       },
       parent: this.g,
       tagName: 'circle',
-    }
-
-    this.lt = drawElement(leftTop)
+    })
   }
 
   pointsValue() {
