@@ -48,7 +48,9 @@ npm run dev
 ```
 
 ## Contributing
+
 Contributions are welcome! If you have ideas for improvements or have found bugs, please feel free to open an issue or submit a pull request.
 
 ## License
+
 This project is open-source and available under the MIT License.
