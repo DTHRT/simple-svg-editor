@@ -22,7 +22,10 @@ svg.addEventListener(
 
     let selectedElement = null
 
-    if (elements.length > 0) {
+    if (
+      elements.length > 0 &&
+      elements.find((element) => element.link === currentElement)
+    ) {
       elements.map((element) => {
         if (element.link === currentElement) {
           selectedElement = element
