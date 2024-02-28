@@ -12,7 +12,7 @@ const delta = {
 }
 
 const supportedTags = ['path', 'polygon']
-let selectedElement = null
+const elements = []
 
 svg.addEventListener(
   'mousedown',
@@ -20,7 +20,18 @@ svg.addEventListener(
     const currentElement = evt.target
     if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
 
-    selectedElement = new ElementClass(currentElement, svg)
+    let selectedElement = null
+
+    if (elements.length > 0) {
+      elements.map((element) => {
+        if (element.link === currentElement) {
+          selectedElement = element
+        }
+      })
+    } else {
+      selectedElement = new ElementClass(currentElement, svg)
+      elements.push(selectedElement)
+    }
 
     const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
     delta.x = selectedElement.element.x - mouseX
@@ -56,6 +67,12 @@ svg.addEventListener(
   'mousemove',
   (evt) => {
     const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
+    if (!elements.length) return
+
+    const currentElement = evt.target
+    const selectedElement = elements.find(
+      (element) => element.link === currentElement
+    )
 
     if (isDragging) {
       selectedElement.element.x = mouseX + delta.x
