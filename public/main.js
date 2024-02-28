@@ -77,8 +77,8 @@ svg.addEventListener(
     if (evt.target.tagName == elementsArr[index].tagName) {
       dragging = index + 1
       impact = oMousePos(svg, evt)
-      delta.x = elementsArr[index].o.x - impact.x
-      delta.y = elementsArr[index].o.y - impact.y
+      delta.x = elementsArr[index].element.x - impact.x
+      delta.y = elementsArr[index].element.y - impact.y
     }
 
     if (evt.target.tagName == 'circle') {
@@ -113,8 +113,8 @@ svg.addEventListener(
 
     if (dragging) {
       let index = dragging - 1
-      elementsArr[index].o.x = mouse.x + delta.x
-      elementsArr[index].o.y = mouse.y + delta.y
+      elementsArr[index].element.x = mouse.x + delta.x
+      elementsArr[index].element.y = mouse.y + delta.y
       elementsArr[index].update()
     }
 
@@ -122,8 +122,8 @@ svg.addEventListener(
       let index = rotating - 1
       elementsArr[index].a =
         Math.atan2(
-          elementsArr[index].o.y - mouse.y,
-          elementsArr[index].o.x - mouse.x
+          elementsArr[index].element.y - mouse.y,
+          elementsArr[index].element.x - mouse.x
         ) - elementsArr[index].A
       elementsArr[index].update()
     }
