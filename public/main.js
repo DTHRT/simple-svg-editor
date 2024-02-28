@@ -3,7 +3,7 @@ import { oMousePos } from './utils.js'
 
 const svg = document.querySelector('svg')
 
-let rotating = false
+let isRotating = false
 let isDragging = false
 
 const delta = {
@@ -13,14 +13,19 @@ const delta = {
 
 const supportedTags = ['path', 'polygon']
 const elements = []
+let selectedElement = null
 
 svg.addEventListener(
   'mousedown',
   (evt) => {
     const currentElement = evt.target
-    if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
 
-    let selectedElement = null
+    if (currentElement.tagName === 'circle') {
+      isRotating = true
+      return
+    }
+
+    if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
 
     if (
       elements.length > 0 &&
@@ -41,10 +46,6 @@ svg.addEventListener(
     delta.x = selectedElement.element.x - mouseX
     delta.y = selectedElement.element.y - mouseY
     isDragging = true
-
-    // if (evt.target.tagName === 'circle') {
-    //   rotating = parseInt(evt.target.parentElement.id)
-    // }
   },
   false
 )
@@ -52,20 +53,20 @@ svg.addEventListener(
 svg.addEventListener(
   'mouseup',
   () => {
-    rotating = false
+    isRotating = false
     isDragging = false
   },
   false
 )
 
-svg.addEventListener(
-  'mouseleave',
-  () => {
-    rotating = false
-    isDragging = false
-  },
-  false
-)
+// svg.addEventListener(
+//   'mouseleave',
+//   () => {
+//     isRotating = false
+//     isDragging = false
+//   },
+//   false
+// )
 
 svg.addEventListener(
   'mousemove',
@@ -73,27 +74,20 @@ svg.addEventListener(
     const { x: mouseX, y: mouseY } = oMousePos(svg, evt)
     if (!elements.length) return
 
-    const currentElement = evt.target
-    const selectedElement = elements.find(
-      (element) => element.link === currentElement
-    )
-
     if (isDragging) {
       selectedElement.element.x = mouseX + delta.x
       selectedElement.element.y = mouseY + delta.y
       selectedElement.update()
     }
 
-    //
-    // if (rotating) {
-    //   let index = rotating - 1
-    //   elementsArr[index].a =
-    //     Math.atan2(
-    //       elementsArr[index].element.y - mouseCoordinates.y,
-    //       elementsArr[index].element.x - mouseCoordinates.x
-    //     ) - elementsArr[index].A
-    //   elementsArr[index].update()
-    // }
+    if (isRotating) {
+      selectedElement.a =
+        Math.atan2(
+          selectedElement.element.y - mouseY,
+          selectedElement.element.x - mouseX
+        ) - selectedElement.A
+      selectedElement.update()
+    }
   },
   false
 )

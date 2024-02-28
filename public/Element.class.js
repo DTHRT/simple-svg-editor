@@ -4,6 +4,7 @@ const deg = 180 / Math.PI
 
 export class ElementClass {
   constructor(element, svg) {
+    this.id = element.parentElement.getAttribute('id')
     this.link = element
     this.a = 0
     this.tagName = element.tagName
