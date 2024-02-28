@@ -5,10 +5,6 @@ const svg = document.querySelector('svg')
 
 let rotating = false
 let dragging = false
-let impact = {
-  x: 0,
-  y: 0,
-}
 
 const delta = {
   x: 0,
@@ -76,7 +72,8 @@ svg.addEventListener(
     let index = parseInt(evt.target.parentElement.id) - 1
     if (evt.target.tagName == elementsArr[index].tagName) {
       dragging = index + 1
-      impact = oMousePos(svg, evt)
+
+      const impact = oMousePos(svg, evt)
       delta.x = elementsArr[index].element.x - impact.x
       delta.y = elementsArr[index].element.y - impact.y
     }
