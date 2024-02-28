@@ -65,9 +65,9 @@ export class Element {
   }
 
   update() {
-    let transf = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
-    this.el.setAttributeNS(null, 'transform', transf)
-    this.box.setAttributeNS(null, 'transform', transf)
-    this.lt.setAttributeNS(null, 'transform', transf)
+    const transformValue = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
+    this.el.setAttributeNS(null, 'transform', transformValue)
+    this.box.setAttributeNS(null, 'transform', transformValue)
+    this.lt.setAttributeNS(null, 'transform', transformValue)
   }
 }
