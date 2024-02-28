@@ -16,8 +16,8 @@ svg.addEventListener('click', (evt) => {
   const currentElement = evt.target
   if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
 
-  // const element = new ElementClass(currentElement, svg)
-  // console.log(element)
+  const element = new ElementClass(currentElement, svg)
+  console.log(element)
 })
 
 svg.addEventListener(
