@@ -68,9 +68,9 @@ svg.addEventListener(
     if (evt.target.tagName == elementsArr[index].tagName) {
       dragging = index + 1
 
-      const impact = oMousePos(svg, evt)
-      delta.x = elementsArr[index].element.x - impact.x
-      delta.y = elementsArr[index].element.y - impact.y
+      const mouseCoordinates = oMousePos(svg, evt)
+      delta.x = elementsArr[index].element.x - mouseCoordinates.x
+      delta.y = elementsArr[index].element.y - mouseCoordinates.y
     }
 
     if (evt.target.tagName == 'circle') {
