@@ -8,13 +8,13 @@ export function oMousePos(svg, evt) {
   }
 }
 
-export function drawElement(o) {
-  let el = document.createElementNS(SVG_NS, o.tagName)
-  for (let name in o.properties) {
-    if (o.properties.hasOwnProperty(name)) {
-      el.setAttributeNS(null, name, o.properties[name])
+export function drawElement(element) {
+  let el = document.createElementNS(SVG_NS, element.tagName)
+  for (let name in element.properties) {
+    if (element.properties.hasOwnProperty(name)) {
+      el.setAttributeNS(null, name, element.properties[name])
     }
   }
-  o.parent.appendChild(el)
+  element.parent.appendChild(el)
   return el
 }
