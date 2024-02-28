@@ -1,3 +1,5 @@
+import { ElementClass } from './Element.class.js'
+
 const svg = document.querySelector('svg')
 
 let rotating = false
@@ -7,6 +9,16 @@ const delta = {
   x: 0,
   y: 0,
 }
+
+const supportedTags = ['path', 'polygon']
+
+svg.addEventListener('click', (evt) => {
+  const currentElement = evt.target
+  if (!supportedTags.some((tag) => tag === currentElement.tagName)) return
+
+  // const element = new ElementClass(currentElement, svg)
+  // console.log(element)
+})
 
 svg.addEventListener(
   'mousedown',
