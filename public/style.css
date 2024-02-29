@@ -24,7 +24,6 @@ path {
   cursor: move;
 }
 
-circle {
-  fill: dodgerblue;
+.rotationKnob {
   cursor: alias;
 }

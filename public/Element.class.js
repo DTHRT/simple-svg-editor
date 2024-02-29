@@ -75,10 +75,10 @@ export class ElementClass {
 
     this.lt = drawElement({
       properties: {
-        cx: this.LT.x,
-        cy: this.LT.y,
-        r: 6,
-        fill: 'blue',
+        class: 'rotationKnob',
+        cx: this.LT.x - 25,
+        cy: this.LT.y - 25,
+        r: 20,
         id: 'LT',
       },
       parent: element.parentElement,
@@ -87,10 +87,10 @@ export class ElementClass {
 
     this.rt = drawElement({
       properties: {
-        cx: this.RT.x,
-        cy: this.RT.y,
-        r: 6,
-        fill: 'blue',
+        class: 'rotationKnob',
+        cx: this.RT.x + 25,
+        cy: this.RT.y - 25,
+        r: 20,
         id: 'RT',
       },
       parent: element.parentElement,
@@ -99,10 +99,10 @@ export class ElementClass {
 
     this.lb = drawElement({
       properties: {
-        cx: this.LB.x,
-        cy: this.LB.y,
-        r: 6,
-        fill: 'blue',
+        class: 'rotationKnob',
+        cx: this.LB.x - 25,
+        cy: this.LB.y + 25,
+        r: 20,
         id: 'LB',
       },
       parent: element.parentElement,
@@ -111,10 +111,10 @@ export class ElementClass {
 
     this.rb = drawElement({
       properties: {
-        cx: this.RB.x,
-        cy: this.RB.y,
-        r: 6,
-        fill: 'blue',
+        class: 'rotationKnob',
+        cx: this.RB.x + 25,
+        cy: this.RB.y + 25,
+        r: 20,
         id: 'RB',
       },
       parent: element.parentElement,
