@@ -26,4 +26,5 @@ path {
 
 .rotationKnob {
   cursor: alias;
+  fill: transparent;
 }
