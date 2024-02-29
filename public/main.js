@@ -94,17 +94,17 @@ document.addEventListener(
         case 'rotateKnobLB':
           selectedElement.a =
             Math.atan2(
-              mouseY - selectedElement.element.y,
-              mouseX - selectedElement.element.x
-            ) - selectedElement.A
+              selectedElement.element.y - mouseY,
+              selectedElement.element.x - mouseX
+            ) + selectedElement.A
           break
 
         case 'rotateKnobRB':
           selectedElement.a =
             Math.atan2(
-              selectedElement.element.y - mouseY,
-              selectedElement.element.x - mouseX
-            ) + selectedElement.A
+              mouseY - selectedElement.element.y,
+              mouseX - selectedElement.element.x
+            ) - selectedElement.A
           break
       }
 
