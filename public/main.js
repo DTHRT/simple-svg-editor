@@ -5,6 +5,7 @@ const svg = document.querySelector('svg')
 
 let isRotating = false
 let isDragging = false
+let isResizing = false
 
 const delta = {
   x: 0,
@@ -21,9 +22,15 @@ svg.addEventListener(
   (evt) => {
     const currentElement = evt.target
 
-    if (currentElement.tagName === 'circle') {
+    if (currentElement.classList.contains('rotationKnob')) {
       isRotating = true
       selectedRotationKnob = currentElement.getAttribute('id')
+      return
+    }
+
+    if (currentElement.classList.contains('resizeKnob')) {
+      isResizing = true
+      selectedElement.link.style.transformOrigin = `${selectedElement.LTwithTransform.x}px ${selectedElement.LTwithTransform.y}px`
       return
     }
 
@@ -57,6 +64,7 @@ document.addEventListener(
   () => {
     isRotating = false
     isDragging = false
+    isResizing = false
   },
   false
 )
@@ -109,6 +117,18 @@ document.addEventListener(
       }
 
       selectedElement.update()
+    }
+
+    if (isResizing) {
+      selectedElement.scale.x = mouseX / selectedElement.elRect.width
+      selectedElement.scale.y = mouseY / selectedElement.elRect.height
+      selectedElement.update()
+
+      console.log(
+        mouseX,
+        selectedElement.elRect.width,
+        mouseX / selectedElement.elRect.width
+      )
     }
   },
   false

@@ -40,6 +40,11 @@ export class ElementClass {
       y: this.Top,
     }
 
+    this.LTwithTransform = {
+      x: this.elRect.left - this.svgRect.left,
+      y: this.elRect.top - this.svgRect.top,
+    }
+
     this.RT = {
       x: this.Right,
       y: this.Top,
@@ -58,6 +63,18 @@ export class ElementClass {
     this.element = {
       x: this.elRect.x - this.svgRect.x + this.elRect.width / 2,
       y: this.elRect.y - this.svgRect.y + this.elRect.height / 2,
+    }
+
+    console.log(
+      'x:',
+      this.elRect.x - this.svgRect.x,
+      'y:',
+      this.elRect.y - this.svgRect.y
+    )
+
+    this.scale = {
+      x: 1,
+      y: 1,
     }
 
     this.A = Math.atan2(this.elRect.height / 2, this.elRect.width / 2)
@@ -108,6 +125,7 @@ export class ElementClass {
       parent: element.parentElement,
       tagName: 'circle',
     })
+
     this.rotateKnobRB = drawElement({
       properties: {
         class: 'rotationKnob',
@@ -115,6 +133,54 @@ export class ElementClass {
         cy: this.RB.y + 25,
         r: 20,
         id: 'rotateKnobRB',
+      },
+      parent: element.parentElement,
+      tagName: 'circle',
+    })
+
+    // this.rotateKnobLT = drawElement({
+    //   properties: {
+    //     class: 'rotationKnob',
+    //     cx: this.LT.x - 25,
+    //     cy: this.LT.y - 25,
+    //     r: 20,
+    //     id: 'LT',
+    //   },
+    //   parent: element.parentElement,
+    //   tagName: 'circle',
+    // })
+
+    // this.rotateKnobRT = drawElement({
+    //   properties: {
+    //     class: 'rotationKnob',
+    //     cx: this.RT.x + 25,
+    //     cy: this.RT.y - 25,
+    //     r: 20,
+    //     id: 'RT',
+    //   },
+    //   parent: element.parentElement,
+    //   tagName: 'circle',
+    // })
+
+    // this.rotateKnobLB = drawElement({
+    //   properties: {
+    //     class: 'rotationKnob',
+    //     cx: this.LB.x - 25,
+    //     cy: this.LB.y + 25,
+    //     r: 20,
+    //     id: 'LB',
+    //   },
+    //   parent: element.parentElement,
+    //   tagName: 'circle',
+    // })
+
+    this.resizeKnobRB = drawElement({
+      properties: {
+        class: 'resizeKnob',
+        cx: this.RB.x,
+        cy: this.RB.y,
+        r: 6,
+        id: 'resizeKnobRB',
       },
       parent: element.parentElement,
       tagName: 'circle',
@@ -130,12 +196,14 @@ export class ElementClass {
   }
 
   update() {
-    const transformValue = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
+    const transformValue = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg}) scale(${this.scale.x} ${this.scale.y})`
     this.link.setAttributeNS(null, 'transform', transformValue)
     this.box.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobLT.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobRT.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobLB.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobRB.setAttributeNS(null, 'transform', transformValue)
+
+    this.resizeKnobRB.setAttributeNS(null, 'transform', transformValue)
   }
 }
