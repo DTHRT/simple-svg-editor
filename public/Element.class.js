@@ -73,7 +73,7 @@ export class ElementClass {
       tagName: 'polyline',
     })
 
-    this.lt = drawElement({
+    this.rotateKnobLT = drawElement({
       properties: {
         class: 'rotationKnob',
         cx: this.LT.x - 25,
@@ -85,7 +85,7 @@ export class ElementClass {
       tagName: 'circle',
     })
 
-    this.rt = drawElement({
+    this.rotateKnobRT = drawElement({
       properties: {
         class: 'rotationKnob',
         cx: this.RT.x + 25,
@@ -97,7 +97,7 @@ export class ElementClass {
       tagName: 'circle',
     })
 
-    this.lb = drawElement({
+    this.rotateKnobLB = drawElement({
       properties: {
         class: 'rotationKnob',
         cx: this.LB.x - 25,
@@ -109,7 +109,7 @@ export class ElementClass {
       tagName: 'circle',
     })
 
-    this.rb = drawElement({
+    this.rotateKnowRB = drawElement({
       properties: {
         class: 'rotationKnob',
         cx: this.RB.x + 25,
@@ -134,9 +134,9 @@ export class ElementClass {
     const transformValue = `translate(${this.element.x}, ${this.element.y}) rotate(${this.a * deg})`
     this.link.setAttributeNS(null, 'transform', transformValue)
     this.box.setAttributeNS(null, 'transform', transformValue)
-    this.lt.setAttributeNS(null, 'transform', transformValue)
-    this.rt.setAttributeNS(null, 'transform', transformValue)
-    this.lb.setAttributeNS(null, 'transform', transformValue)
-    this.rb.setAttributeNS(null, 'transform', transformValue)
+    this.rotateKnobLT.setAttributeNS(null, 'transform', transformValue)
+    this.rotateKnobRT.setAttributeNS(null, 'transform', transformValue)
+    this.rotateKnobLB.setAttributeNS(null, 'transform', transformValue)
+    this.rotateKnowRB.setAttributeNS(null, 'transform', transformValue)
   }
 }
