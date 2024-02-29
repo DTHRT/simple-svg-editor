@@ -75,7 +75,7 @@ document.addEventListener(
 
     if (isRotating) {
       switch (selectedRotationKnob) {
-        case 'LT':
+        case 'rotateKnobLT':
           selectedElement.a =
             Math.atan2(
               selectedElement.element.y - mouseY,
@@ -83,7 +83,7 @@ document.addEventListener(
             ) - selectedElement.A
           break
 
-        case 'RT':
+        case 'rotateKnobRT':
           selectedElement.a =
             Math.atan2(
               mouseY - selectedElement.element.y,
@@ -91,7 +91,7 @@ document.addEventListener(
             ) + selectedElement.A
           break
 
-        case 'RB':
+        case 'rotateKnobLB':
           selectedElement.a =
             Math.atan2(
               mouseY - selectedElement.element.y,
@@ -99,7 +99,7 @@ document.addEventListener(
             ) - selectedElement.A
           break
 
-        case 'LB':
+        case 'rotateKnobRB':
           selectedElement.a =
             Math.atan2(
               selectedElement.element.y - mouseY,
