@@ -108,8 +108,7 @@ export class ElementClass {
       parent: element.parentElement,
       tagName: 'circle',
     })
-
-    this.rotateKnowRB = drawElement({
+    this.rotateKnobRB = drawElement({
       properties: {
         class: 'rotationKnob',
         cx: this.RB.x + 25,
@@ -137,6 +136,6 @@ export class ElementClass {
     this.rotateKnobLT.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobRT.setAttributeNS(null, 'transform', transformValue)
     this.rotateKnobLB.setAttributeNS(null, 'transform', transformValue)
-    this.rotateKnowRB.setAttributeNS(null, 'transform', transformValue)
+    this.rotateKnobRB.setAttributeNS(null, 'transform', transformValue)
   }
 }
